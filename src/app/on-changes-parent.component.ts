@@ -21,8 +21,11 @@ export class OnChangesParentComponent {
   reset() {
     // new Hero object every time; triggers onChanges
     this.hero = new Hero('Windstorm');
-    // setting power only triggers onChanges if this value is different
+    // Setting power only triggers onChanges if this value is different
+    // between 2 times at when the Component gives away the control
+    // to Angular (change detection).
     this.power = 'sing';
+    this.power = 'swim';
     if (this.childView) {
       this.childView.reset();
     }
