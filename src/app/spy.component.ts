@@ -22,12 +22,19 @@ export class SpyParentComponent {
     }
   }
   removeHero(hero: string) {
-    this.heroes.splice(this.heroes.indexOf(hero), 1);
+    this.heroes.splice(this.heroes.indexOf(hero), this.heroes.indexOf(hero)==-1?0:1);
     this.logger.tick();
   }
   reset() {
     this.logger.log('reset');
     this.heroes = [];
     this.logger.tick();
+  }
+  ngOnInit() {
+    this.logger.log('SpyComponent OnInit')
+  }
+
+  ngOnDestroy() {
+    this.logger.log('SpyComponent OnDestroy')
   }
 }

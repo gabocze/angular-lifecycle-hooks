@@ -4,6 +4,8 @@
   <label for="hero-name">Hero name: </label>
   <input type="text" id="hero-name" [(ngModel)]="newName" (keyup.enter)="addHero()">
   <button type="button" (click)="addHero()">Add Hero</button>
+  <input type="text" #heroToRemove>
+  <button type="button" (click)="removeHero(heroToRemove.value)">Remove</button>
   <button type="button" (click)="reset()">Reset Heroes</button>
 
   <div class="info">
