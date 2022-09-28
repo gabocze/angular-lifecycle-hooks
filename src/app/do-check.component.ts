@@ -1,4 +1,4 @@
-import { Component, DoCheck, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DoCheck, Input } from '@angular/core';
 
 import { Hero } from './hero';
 
@@ -11,7 +11,8 @@ import { Hero } from './hero';
     <h3>Change Log</h3>
     <div *ngFor="let chg of changeLog" class="log">{{chg}}</div>
   </div>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DoCheckComponent implements DoCheck {
   @Input() hero!: Hero;
@@ -21,7 +22,6 @@ export class DoCheckComponent implements DoCheck {
   changeLog: string[] = [];
   oldHeroName = '';
   oldPower = '';
-  oldLogLength = 0;
   noChangeCount = 0;
 
   ngDoCheck() {
@@ -57,7 +57,7 @@ export class DoCheckComponent implements DoCheck {
   }
 
   reset() {
-    this.changeDetected = true;
+    //this.changeDetected = true;
     this.changeLog = [];
   }
 }

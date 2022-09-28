@@ -8,6 +8,10 @@ import { LoggerService } from './logger.service';
   <hr />
   <div class="parent">
     <h2>Peek-A-Boo</h2>
+    <h4>setTimeout et. al. are not a must in every single case,
+      certainly not at all in this case. The call to tick has been commented
+      away.
+    </h4>
 
     <button type="button" (click)="toggleChild()">
       {{hasChild ? 'Destroy' : 'Create'}} PeekABooComponent
