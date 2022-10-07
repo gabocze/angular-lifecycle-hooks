@@ -1,11 +1,19 @@
 <h2>{{title}}</h2>
-<h4>Aims to demonstrate that when a non-primitive typed property,
-    gets a new instance as it's value, OnChanges is triggered
-    even though old and new instances are equal.
+<h4>Aimed at demonstrate 2 things:
+    <ul>
+        <li>
+            At reset button click time, `hero`, a non-primitive typed property,
+            gets a new instance as it's value. Then OnChanges is triggered
+            even though old and new instances are equal property-by-property.
+        </li>
+        <li>
+            At input text changing time, when a non-primitive typed property,
+            keeps a reference to a same instance, OnChanges is not triggered
+            even though old and new instances are not equal property-by-property.
+        </li>
+    </ul>
 </h4>
-<h4>Intenta mostrar que cuando una propiedad de tipo no primitivo,
-    adquiere una nueva instancia como valor, se activa OnChanges
-    aunque sea igual a la anterior.</h4>
+
 <label for="power-input">Power: </label>
 <input type="text" id="power-input" [(ngModel)]="power">
 <label for="hero-name"> Hero.name: </label>

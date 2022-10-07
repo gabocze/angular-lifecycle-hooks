@@ -8,9 +8,9 @@ import { LoggerService } from './logger.service';
   <hr />
   <div class="parent">
     <h2>Peek-A-Boo</h2>
-    <h4>setTimeout et. al. are not a must in every single case,
-      certainly not at all in this case. The call to tick has been commented
-      away.
+    <h4>Although there're useful tricks out there to push the update of some parts of the view to a better time,
+      they don't make real difference every single time you have a place to use them.
+      Some calls to tick has been commented away in response to that.
     </h4>
 
     <button type="button" (click)="toggleChild()">
