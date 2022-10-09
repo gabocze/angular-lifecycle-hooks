@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ViewChild, DoCheck } from '@angular/core';
 
 import { ChildViewComponent } from './child-view.component';
 import { LoggerService } from './logger.service';
@@ -9,17 +9,16 @@ import { LoggerService } from './logger.service';
     <div>child view begins</div>
       <app-child-view></app-child-view>
     <div>child view ends</div>
-  `
-   + `
+
     <p *ngIf="comment" class="comment">
       {{comment}}
     </p>
   `
 })
-export class AfterViewComponent implements  AfterViewChecked, AfterViewInit {
+export class AfterViewComponent implements  AfterViewChecked, AfterViewInit, DoCheck {
   comment = '';
   private prevHero = '';
-
+  private firstCheck=true;
   // Query for a VIEW child of type `ChildViewComponent`
   @ViewChild(ChildViewComponent) viewChild!: ChildViewComponent;
 
@@ -33,8 +32,24 @@ export class AfterViewComponent implements  AfterViewChecked, AfterViewInit {
     this.doSomething();
   }
 
-  ngAfterViewChecked() {
+  ngAfterViewChecked(): void {
+    /*
     // viewChild is updated after the view has been checked
+    if (this.prevHero === this.viewChild.hero) {
+      this.logIt('AfterViewChecked (no change)');
+    } else {
+      this.prevHero = this.viewChild.hero;
+      this.logIt('AfterViewChecked');
+      this.doSomething();
+    }
+    */
+  }
+
+  ngDoCheck() {
+    if(this.firstCheck) {
+      this.firstCheck=false;
+      return;
+    }
     if (this.prevHero === this.viewChild.hero) {
       this.logIt('AfterViewChecked (no change)');
     } else {
