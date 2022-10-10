@@ -9,8 +9,6 @@ import { LoggerService } from './logger.service';
     <div>projected content begins</div>
       <ng-content></ng-content>
     <div>projected content ends</div>
-  `
-   + `
     <p *ngIf="comment" class="comment">
       {{comment}}
     </p>
